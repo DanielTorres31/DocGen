@@ -16,7 +16,10 @@ public class folderCriation {
 	
 	
 	public static void criacaoDosArquivos() {
-		//A inserção dos arquivos será feita apos consulta no banco, a partir disso será definido o tipo de trega
+		/*A inserção dos arquivos será feita apos consulta no banco, a partir disso será definido em qual pasta será salva o arquivo
+		 * ira criar 
+		 */
+		
 	}
 	
 	public static void criacaoDePasta() {
