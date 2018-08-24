@@ -1,8 +1,10 @@
+package Connection;
+
 import java.sql.*;
 
 public class connectDB {
 	
-	Connection conn = null;
+	static Connection conn = null;
 
 	public static Connection CriarConexao() {
 
@@ -28,7 +30,14 @@ public class connectDB {
 	}
 	
 	public void FecharConexao() {
-		conn.close();
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
+
+	
 
 }
