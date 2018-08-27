@@ -1,9 +1,23 @@
-package entity;
+package entities;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "regras", schema = "req")
 public class Regra {
+	
+	@Id
+	@Column(name = "idregras", nullable = false, updatable = false)
 	private Integer id;
+	
+	@ManyToOne(targetEntity = TipoRegra.class)
+	@Column(name = "idtiporegra", nullable = false)
 	private Integer idTipo;
+	
+	@Column(name = "nomeregra", nullable = false)
 	private String nome;
+	
+	@Column(name = "descricaoregra", nullable = false)
 	private String descricao;
 	
 	public Regra() {
