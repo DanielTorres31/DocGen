@@ -1,13 +1,25 @@
 package controller;
 
 import java.io.File;
+import java.util.List;
+
+import entities.TipoRegra;
+import repository.TipoRegrasRepository;
 
 public class folderCriation {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+			
+		buscaTipoRegras();
+			
+		criacaoDePasta();
 		
-			criacaoDePasta();
-		
+	}
+	
+	public static void buscaTipoRegras() {
+		TipoRegrasRepository tipoRegra = new TipoRegrasRepository();
+		List<TipoRegra> tiposRegra = tipoRegra.findAll();
+		System.out.println(tiposRegra);
 	}
 	
 	

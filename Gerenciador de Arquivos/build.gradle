@@ -31,4 +31,8 @@ dependencies {
 	 * JPA
 	 **/
 	 compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
+	 	 
+	 // https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink
+	 compile group: 'org.eclipse.persistence', name: 'eclipselink', version: '2.5.0'
+
 }

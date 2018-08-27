@@ -12,8 +12,13 @@ import javax.persistence.criteria.CriteriaQuery;
 import entities.TipoRegra;
 
 public class TipoRegrasRepository {
-	EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistenceUnit");
-	EntityManager em = factory.createEntityManager();
+	
+//	@PersistenceUnit(unitName = "persistenceUnit")
+//	private EntityManagerFactory entityManagerFactory;
+	
+	private EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistenceUnit");
+	
+	private EntityManager em = factory.createEntityManager();		
 	
 	public List<TipoRegra> findAll() {
 		CriteriaBuilder builder = em.getCriteriaBuilder();
