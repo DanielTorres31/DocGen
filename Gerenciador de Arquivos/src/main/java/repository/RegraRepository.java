@@ -3,6 +3,8 @@ package repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -10,7 +12,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import entities.Regra;
 
 public class RegraRepository {
-	EntityManager em;
+	EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistenceUnit");
+	EntityManager em = factory.createEntityManager();
 	
 	public List<Regra> findAll() {
 		CriteriaBuilder builder = em.getCriteriaBuilder();
