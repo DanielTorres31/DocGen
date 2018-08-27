@@ -1,38 +1,17 @@
-buildscript {
-	repositories {
-        mavenCentral()
-    	maven {  url 'https://plugins.gradle.org/m2/' }
-    }
-	dependencies {
-    	classpath 'gradle.plugin.com.lv.plugins:gradle-weblogic-plugin:0.4'
-	}
-}
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'war'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
       mavenCentral()
-	  maven {
-            url "http://192.168.0.171:8075/repository/internal/"
-      }
 }
 
-configurations {
-    compile
-}
+dependencies { 	 
+	// https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.jpa
+    compile group: 'org.eclipse.persistence', name: 'org.eclipse.persistence.jpa', version: '2.7.3'
 
-dependencies {
-	/**
-	 * JPA
-	 **/
-	 compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
-	 	 
-	 // https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink
-	 compile group: 'org.eclipse.persistence', name: 'eclipselink', version: '2.5.0'
+	compile files('C:/bea/wlserver_10.3/server/lib/ojdbc6.jar')
 
 }

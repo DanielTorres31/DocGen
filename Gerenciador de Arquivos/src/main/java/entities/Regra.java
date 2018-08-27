@@ -1,6 +1,11 @@
 package entities;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "regras", schema = "req")
@@ -11,8 +16,8 @@ public class Regra {
 	private Integer id;
 	
 	@ManyToOne(targetEntity = TipoRegra.class)
-	@Column(name = "idtiporegra", nullable = false)
-	private Integer idTipo;
+	@JoinColumn(name = "idtiporegra", nullable = false)
+	private TipoRegra tipoRegra;
 	
 	@Column(name = "nomeregra", nullable = false)
 	private String nome;
@@ -31,12 +36,12 @@ public class Regra {
 		this.id = id;
 	}
 
-	public Integer getIdTipo() {
-		return idTipo;
+	public TipoRegra getTipoRegra() {
+		return tipoRegra;
 	}
 
-	public void setIdTipo(Integer idTipo) {
-		this.idTipo = idTipo;
+	public void setTipoRegra(TipoRegra tipoRegra) {
+		this.tipoRegra = tipoRegra;
 	}
 
 	public String getNome() {

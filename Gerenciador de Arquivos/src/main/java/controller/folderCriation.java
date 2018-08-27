@@ -3,16 +3,20 @@ package controller;
 import java.io.File;
 import java.util.List;
 
+import entities.Regra;
 import entities.TipoRegra;
+import repository.RegraRepository;
 import repository.TipoRegrasRepository;
 
 public class folderCriation {
+	static List<TipoRegra> tiposRegra;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 			
 		buscaTipoRegras();
+		//buscaRegras();
 			
-		criacaoDePasta();
+		criacaoDePasta(tiposRegra);
 		
 	}
 	
@@ -20,18 +24,24 @@ public class folderCriation {
 		TipoRegrasRepository tipoRegra = new TipoRegrasRepository();
 		List<TipoRegra> tiposRegra = tipoRegra.findAll();
 		System.out.println(tiposRegra);
+
 	}
 	
 	
-	public static void criacaoDosArquivos() {
-		/*A inserção dos arquivos será feita apos consulta no banco, a partir disso será definido em qual pasta será salva o arquivo
-		 * ira criar 
-		 */
-		
-	}
-	
-	public static void criacaoDePasta() {
+	public static void criacaoDePasta(List<TipoRegra> tiposRegra) {
 		//Metodo foi criado dessa forma enquanto a consulta no banco de dados nao fica pronta
+		
+		File pastas = new File ("U:\\Regras" );
+		
+		
+		for (int i = 0; i < 9;) {
+			if (!pastas.exists()) {			 
+			((File) tiposRegra).mkdirs();
+			}
+			i++;
+		}
+		
+		
 		File traducao = new File("C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\1-Regra de Traducao");
 		File  roteamento = new File("C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\2-Regra de Roteamento");
 		File  retencao = new File("C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\3-Regra de Retencao");
@@ -75,5 +85,12 @@ public class folderCriation {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+	
+	public static void criacaoDosArquivos() {
+		/*A inserção dos arquivos será feita apos consulta no banco, a partir disso será definido em qual pasta será salva o arquivo
+		 * ira criar 
+		 */
+		
 	}
 }
