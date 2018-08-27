@@ -1,11 +1,17 @@
 package entities;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tiporegra", schema = "req")
 public class TipoRegra {
-	private Integer id;
-	private String tipo;
 	
-	public TipoRegra() {
-	}
+	@Id
+	@Column(name = "idtiporegra", nullable = false, updatable = false )
+	private Integer id;
+	
+	@Column(name = "nometiporegra", nullable = false)
+	private String nometiporegra;
 
 	public Integer getId() {
 		return id;
@@ -15,15 +21,14 @@ public class TipoRegra {
 		this.id = id;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getNometiporegra() {
+		return nometiporegra;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setNometiporegra(String nometiporegra) {
+		this.nometiporegra = nometiporegra;
 	}
 	
-
 	
 	
 }
