@@ -4,8 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Connection.connectDB;
-
 public class Consultas {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -45,6 +43,4 @@ public class Consultas {
 
 		return sql;
 	}
-	
-	
 }
