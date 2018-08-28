@@ -20,11 +20,15 @@ public class TipoRegrasRepository {
 
 	
 	public List<TipoRegra> findAll() {
+		//chamando construtor do criteria
 		CriteriaBuilder builder = em.getCriteriaBuilder();
+		//criando consulta para a classe Regra
 		CriteriaQuery<TipoRegra> query = builder.createQuery(TipoRegra.class);
+		//buscando campos da classe
 		query.from(TipoRegra.class);
+		//executando consulta
 		TypedQuery<TipoRegra> typedQuery = em.createQuery(query);
-		
+		//buscando resultados
 		List<TipoRegra> tipoRegras = typedQuery.getResultList();
 		
 		return tipoRegras;
