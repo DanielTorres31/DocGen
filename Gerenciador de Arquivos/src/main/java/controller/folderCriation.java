@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.File;
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import entities.Regra;
@@ -9,103 +11,59 @@ import repository.RegraRepository;
 import repository.TipoRegrasRepository;
 
 public class folderCriation {
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
-//		TipoRegra tp = null;
-//		for (TipoRegra tipo : tiposRegra) {
-//			System.out.println(tipo);
-//			if(tipo.getId() == 3) {
-//				tp = tipo;
-//			}
-//		}
-//		
-//		
-//		for(Regra regra : regrasPorId) {
-//		System.out.println(regra.getNome());
-//		}
+		//findAllTipoRegra();
+		criarPasta(args[0],findAllTipoRegra());
+		// TipoRegra tp = null;
+		// for (TipoRegra tipo : tiposRegra) {
+		// System.out.println(tipo);
+		// if(tipo.getId() == 3) {
+		// tp = tipo;
+		// }
+		// }
+		//
+		//
+		// for(Regra regra : regrasPorId) {
+		// System.out.println(regra.getNome());
+		// }
 
 	}
 
-	public List<TipoRegra> findAllTipoRegra() {
-		TipoRegrasRepository tipoRegraRepository = new TipoRegrasRepository();		
-		List<TipoRegra> tiposRegra = tipoRegraRepository.findAll();		
+	public static List<TipoRegra> findAllTipoRegra() {
+		TipoRegrasRepository tipoRegraRepository = new TipoRegrasRepository();
+		List<TipoRegra> tiposRegra = tipoRegraRepository.findAll();
 		return tiposRegra;
 	}
-	
-	public static List<Regra> findRegrasByIdTipoRegra(TipoRegra tipoRegra) {		
-		RegraRepository regraRepository = new RegraRepository();		
-		List<Regra> regrasPorId = regraRepository.findByTipoRegra(tipoRegra);		
+
+	public static List<Regra> findRegrasByIdTipoRegra(TipoRegra tipoRegra) {
+		RegraRepository regraRepository = new RegraRepository();
+		List<Regra> regrasPorId = regraRepository.findByTipoRegra(tipoRegra);
 		return regrasPorId;
 	}
 
-	public static void criacaoDePasta(List<TipoRegra> tiposRegra) {
-		// Metodo foi criado dessa forma enquanto a consulta no banco de dados nao fica
-		// pronta
+	public static void criarPasta(String path, List<TipoRegra> tiposRegra) {
 
-		File pastas = new File("U:\\Regras");
+		File pastas = new File(path);
 
-		for (int i = 0; i < 9;) {
-			if (!pastas.exists()) {
-				((File) tiposRegra).mkdirs();
+
+		for (TipoRegra tipo : tiposRegra) {
+			pastas =  new File(path + File.separator + tipo.getId() +" - " +   tipo.getNometiporegra());
+			
+			for (int i = 0; i < tiposRegra.size();) {
+				if (!pastas.exists()) {
+					pastas.mkdirs();
+				}
+				i++;
 			}
-			i++;
+
 		}
 
-		File traducao = new File("C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\1-Regra de Traducao");
-		File roteamento = new File("C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\2-Regra de Roteamento");
-		File retencao = new File("C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\3-Regra de Retencao");
-		File parametrizacao = new File(
-				"C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\4-Regra de Parametrizacao");
-		File interpretacao = new File("C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\5-Regra de Interpretacao");
-		File execucaoComandos = new File(
-				"C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\6-Regra de Execucao de Comando");
-		File enriquecimento = new File(
-				"C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\7-Regra de Enriquecimento");
-		File dependencia = new File("C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\8-Regra de Dependencia");
-		File conectores = new File("C:\\\\Users\\\\vicente.mourao\\\\Desktop\\\\Regras\\\\9-Regra de Conectores");
-
-		try {
-			if (!traducao.exists()) {
-				traducao.mkdirs();
-			}
-
-			if (!roteamento.exists()) {
-				roteamento.mkdirs();
-			}
-			if (!retencao.exists()) {
-				retencao.mkdirs();
-			}
-			if (!parametrizacao.exists()) {
-				parametrizacao.mkdirs();
-			}
-			if (!interpretacao.exists()) {
-				interpretacao.mkdirs();
-			}
-
-			if (!execucaoComandos.exists()) {
-				execucaoComandos.mkdirs();
-			}
-			if (!enriquecimento.exists()) {
-				enriquecimento.mkdirs();
-			}
-			if (!dependencia.exists()) {
-				dependencia.mkdirs();
-			}
-			if (!conectores.exists()) {
-				conectores.mkdirs();
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
 	}
 
 	public static void criacaoDosArquivos() {
-		/*
-		 * A inserção dos arquivos será feita apos consulta no banco, a partir disso
-		 * será definido em qual pasta será salva o arquivo ira criar
-		 */
+		File arquivo = new
 
 	}
 }
