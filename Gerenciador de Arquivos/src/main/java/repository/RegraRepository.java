@@ -3,8 +3,6 @@ package repository;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -13,12 +11,19 @@ import javax.persistence.criteria.Root;
 
 import entities.Regra;
 import entities.TipoRegra;
+import persistence.PersistenceManager;
 
 public class RegraRepository {
-	EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistenceUnit");
-	EntityManager em = factory.createEntityManager();
+//	EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistenceUnit");
+//	EntityManager em = factory.createEntityManager();
 	
-	public List<Regra> findAll() {
+	private EntityManager em;		
+	
+	public RegraRepository() {
+		em = PersistenceManager.INSTANCE.getEntityManager();
+	}
+	
+	public List<Regra> findAll() {		
 		//chamando construtor do criteria
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 		//criando consulta para a classe Regra
@@ -33,7 +38,7 @@ public class RegraRepository {
 		return regras;
 	}
 	
-	public List<Regra> findByTipoRegra(TipoRegra tipoRegra) {
+	public List<Regra> findByTipoRegra(TipoRegra tipoRegra) {		
 		//chamando construtor do criteria
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 		//criando consulta para a classe Regra
@@ -50,7 +55,6 @@ public class RegraRepository {
 		List<Regra> regras = typedQuery.getResultList();
 		
 		return regras;
-
 	}
 
 }
