@@ -29,6 +29,8 @@ public class TipoRegra {
 		this.nometiporegra = nometiporegra;
 	}
 	
-	
+	public String getPath() {
+		return getId() +" - " + getNometiporegra();
+	}
 	
 }
