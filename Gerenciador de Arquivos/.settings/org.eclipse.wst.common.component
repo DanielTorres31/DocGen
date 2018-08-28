@@ -2,6 +2,5 @@
 	<wb-module deploy-name="Gerenciador de Arquivos">
 		<property name="context-root" value="Gerenciador de Arquivos"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
 	</wb-module>
 </project-modules>
