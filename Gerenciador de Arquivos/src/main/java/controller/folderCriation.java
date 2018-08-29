@@ -14,8 +14,19 @@ public class folderCriation {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		criarPasta(args[0],findAllTipoRegra());
-		criarArquivos(args[0], findAllRegras());
+//		criarPasta(args[0],findAllTipoRegra());
+//		criarArquivos(args[0], findAllRegras());
+		List<TipoRegra> tipoRegra = findAllTipoRegra();
+		List<Regra> regras = null;
+		for(TipoRegra tipo : tipoRegra) {
+			if(tipo.getId() == 3) {
+				regras = findRegrasByIdTipoRegra(tipo);
+			}
+		}
+		for(Regra regra : regras) {
+			String conteudo = geradorConteudoArquivo(regra);
+			System.out.println(conteudo);
+		}
 	}
 
 	public static List<TipoRegra> findAllTipoRegra() {
@@ -29,11 +40,13 @@ public class folderCriation {
 		List<Regra> regrasPorId = regraRepository.findByTipoRegra(tipoRegra);
 		return regrasPorId;
 	}
+	
 	public static List<Regra> findAllRegras() {
 		RegraRepository regraRepository = new RegraRepository();
 		List<Regra> regras = regraRepository.findAll();
 		return regras;
 	}
+	
 	public static void criarPasta(String path, List<TipoRegra> tiposRegra) {
 		File pastas = new File(path);
 		for (TipoRegra tipo : tiposRegra) {
@@ -57,5 +70,32 @@ public class folderCriation {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public static String geradorConteudoArquivo(Regra regra) {
+		final String LINE_SEPARATOR = System.getProperty("line.separator");
+		
+		String nome = "Regra: " + regra.getNome();
+		Integer tamNome = nome.length();
+		String descricao = "Descrição: " + regra.getDescricao();
+		Integer tamDesc = descricao.length();
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(repetidorString("-", tamNome)).append(LINE_SEPARATOR);
+		sb.append(nome).append(LINE_SEPARATOR);
+		sb.append(repetidorString("-", tamNome)).append(LINE_SEPARATOR).append(LINE_SEPARATOR);		
+		sb.append(descricao).append(LINE_SEPARATOR);
+		sb.append(repetidorString("=", tamDesc));		
+		
+		return sb.toString();
+		
+	}
+	
+	private static String repetidorString(String str, int vezes) {
+		String newStr = "";
+		for(int i=0; i<vezes; i++) {
+			newStr+=str;
+		}		
+		return newStr;
 	}
 }
