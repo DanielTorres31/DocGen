@@ -11,7 +11,11 @@ repositories {
 dependencies { 	 
 	// https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.jpa
     compile group: 'org.eclipse.persistence', name: 'org.eclipse.persistence.jpa', version: '2.7.3'
+	
+	// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
 
+	
 	compile files('C:/bea/wlserver_10.3/server/lib/ojdbc6.jar')
 
 }

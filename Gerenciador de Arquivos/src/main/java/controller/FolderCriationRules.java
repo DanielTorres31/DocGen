@@ -11,7 +11,7 @@ import entities.TipoRegra;
 import repository.RegraRepository;
 import repository.TipoRegrasRepository;
 
-public class folderCriation {
+public class FolderCriationRules {
 
 	public static void main(String[] args) {
 		criarPasta(args[0],findAllTipoRegra());
