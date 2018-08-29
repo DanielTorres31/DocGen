@@ -3,6 +3,7 @@ package controller;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import entities.Regra;
@@ -14,19 +15,21 @@ public class folderCriation {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		criarPasta(args[0],findAllTipoRegra());
-//		criarArquivos(args[0], findAllRegras());
-		List<TipoRegra> tipoRegra = findAllTipoRegra();
-		List<Regra> regras = null;
-		for(TipoRegra tipo : tipoRegra) {
-			if(tipo.getId() == 3) {
-				regras = findRegrasByIdTipoRegra(tipo);
-			}
-		}
-		for(Regra regra : regras) {
-			String conteudo = geradorConteudoArquivo(regra);
-			System.out.println(conteudo);
-		}
+		criarPasta(args[0],findAllTipoRegra());
+		criarArquivos(args[0], findAllRegras());
+//		List<TipoRegra> tipoRegra = findAllTipoRegra();
+//		List<Regra> regras = null;
+//		for(TipoRegra tipo : tipoRegra) {
+//			if(tipo.getId() == 3) {
+//				regras = findRegrasByIdTipoRegra(tipo);
+//			}
+//		}
+//		for(Regra regra : regras) {
+//			//if(regra.getNome() == "AcessoIdHsiNetwork"){
+//			String conteudo = geradorConteudoArquivo(regra);
+//			System.out.println(conteudo);
+//			//}
+//		}
 	}
 
 	public static List<TipoRegra> findAllTipoRegra() {
@@ -65,6 +68,9 @@ public class folderCriation {
 			String nomeArquivo = path + File.separator + regra.getTipoRegra().getPath() + File.separator + regra.getNome() + ".rst";
 			try {
 				FileWriter arquivo= new FileWriter(nomeArquivo,true);
+				PrintWriter gravar = new PrintWriter(arquivo);
+				gravar.print(geradorConteudoArquivo(regra));
+				arquivo.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -75,17 +81,19 @@ public class folderCriation {
 	public static String geradorConteudoArquivo(Regra regra) {
 		final String LINE_SEPARATOR = System.getProperty("line.separator");
 		
-		String nome = "Regra: " + regra.getNome();
+		String nome = regra.getNome();
 		Integer tamNome = nome.length();
-		String descricao = "Descrição: " + regra.getDescricao();
-		Integer tamDesc = descricao.length();
+		String descricao = regra.getDescricao();
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append(repetidorString("-", tamNome)).append(LINE_SEPARATOR);
+		sb.append(repetidorString("=", tamNome)).append(LINE_SEPARATOR);
 		sb.append(nome).append(LINE_SEPARATOR);
-		sb.append(repetidorString("-", tamNome)).append(LINE_SEPARATOR).append(LINE_SEPARATOR);		
+		sb.append(repetidorString("=", tamNome)).append(LINE_SEPARATOR).append(LINE_SEPARATOR);
+		sb.append(repetidorString("-", 10)).append(LINE_SEPARATOR);
+		sb.append("Descrição:").append(LINE_SEPARATOR);
+		sb.append(repetidorString("-", 10)).append(LINE_SEPARATOR);
 		sb.append(descricao).append(LINE_SEPARATOR);
-		sb.append(repetidorString("=", tamDesc));		
+		
 		
 		return sb.toString();
 		
