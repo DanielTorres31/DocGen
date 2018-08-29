@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.swing.JPopupMenu.Separator;
-
 import entities.Regra;
 import entities.TipoRegra;
 import repository.RegraRepository;
