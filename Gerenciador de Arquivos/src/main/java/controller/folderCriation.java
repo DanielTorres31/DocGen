@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.swing.JPopupMenu.Separator;
+
 import entities.Regra;
 import entities.TipoRegra;
 import repository.RegraRepository;
@@ -16,6 +18,24 @@ public class folderCriation {
 	public static void main(String[] args) {
 		criarPasta(args[0],findAllTipoRegra());
 		criarArquivos(args[0], findAllRegras());
+		
+		//Teste gerador de conteúdo.
+//		List<TipoRegra> tiposRegra = findAllTipoRegra();
+//		List<Regra> regras = null;
+//		
+//		for(TipoRegra tipo : tiposRegra) {
+//			if(tipo.getId() == 2) {
+//				regras = findRegrasByIdTipoRegra(tipo);
+//				break;
+//			}
+//		}
+//		for (Regra regra : regras) {
+//			if(regra.getNome().equals("AdslDistributionRule")) {
+//				String conteudo = geradorConteudoArquivo(regra);
+//				System.out.println(conteudo);
+//			}
+//		}
+		
 	}
 
 	public static List<TipoRegra> findAllTipoRegra() {
@@ -78,10 +98,16 @@ public class folderCriation {
 		sb.append(repetidorString("-", 9)).append(LINE_SEPARATOR);
 		sb.append("Descrição").append(LINE_SEPARATOR);
 		sb.append(repetidorString("-", 9)).append(LINE_SEPARATOR);
-		sb.append(descricao).append(LINE_SEPARATOR);		
+		sb.append(formatadorDescricao(descricao)).append(LINE_SEPARATOR);		
 		
 		return sb.toString();
 		
+	}
+	
+	public static String formatadorDescricao (String descricao) {
+		descricao = descricao.replaceAll("\n", "\n\n");
+		
+		return descricao;
 	}
 	
 	private static String repetidorString(String str, int vezes) {
