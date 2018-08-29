@@ -75,8 +75,8 @@ public class folderCriation {
 		sb.append(repetidorString("=", tamNome)).append(LINE_SEPARATOR);
 		sb.append(nome).append(LINE_SEPARATOR);
 		sb.append(repetidorString("=", tamNome)).append(LINE_SEPARATOR).append(LINE_SEPARATOR);
-		sb.append(repetidorString("-", 10)).append(LINE_SEPARATOR);
-		sb.append("Descrição:").append(LINE_SEPARATOR);
+		sb.append(repetidorString("-", 9)).append(LINE_SEPARATOR);
+		sb.append("Descrição").append(LINE_SEPARATOR);
 		sb.append(repetidorString("-", 10)).append(LINE_SEPARATOR);
 		sb.append(descricao).append(LINE_SEPARATOR);
 		
