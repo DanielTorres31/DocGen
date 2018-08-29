@@ -14,22 +14,8 @@ import repository.TipoRegrasRepository;
 public class folderCriation {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		criarPasta(args[0],findAllTipoRegra());
 		criarArquivos(args[0], findAllRegras());
-//		List<TipoRegra> tipoRegra = findAllTipoRegra();
-//		List<Regra> regras = null;
-//		for(TipoRegra tipo : tipoRegra) {
-//			if(tipo.getId() == 3) {
-//				regras = findRegrasByIdTipoRegra(tipo);
-//			}
-//		}
-//		for(Regra regra : regras) {
-//			//if(regra.getNome() == "AcessoIdHsiNetwork"){
-//			String conteudo = geradorConteudoArquivo(regra);
-//			System.out.println(conteudo);
-//			//}
-//		}
 	}
 
 	public static List<TipoRegra> findAllTipoRegra() {
