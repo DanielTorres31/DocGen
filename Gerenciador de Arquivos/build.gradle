@@ -13,5 +13,8 @@ dependencies {
     compile group: 'org.eclipse.persistence', name: 'org.eclipse.persistence.jpa', version: '2.7.3'
 	
 	compile files('C:/bea/wlserver_10.3/server/lib/ojdbc6.jar')
+	
+	compile project(':common')
+	compile project(':domain')
 
 }
